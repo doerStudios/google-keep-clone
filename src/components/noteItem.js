@@ -28,7 +28,9 @@ function NoteItem(props) {
                 ></Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={console.log()}>Edit</Dropdown.Item>
-                  <Dropdown.Item onClick={() => context.deleteNote(props.id)}>
+                  <Dropdown.Item
+                    onClick={() => context.deleteNote(props.index)}
+                  >
                     Remove
                   </Dropdown.Item>
                 </Dropdown.Menu>

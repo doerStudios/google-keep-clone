@@ -5,8 +5,8 @@ import NoteItem from "./noteItem";
 
 function NotesList() {
   const context = useContext(NotesContext);
-  let notes = context.notes.map((x) => {
-    return <NoteItem key={x.id} title={x.title} note={x.note} />;
+  let notes = context.notes.map((x, i) => {
+    return <NoteItem key={x.id} title={x.title} note={x.note} index={i} />;
   });
 
   return (

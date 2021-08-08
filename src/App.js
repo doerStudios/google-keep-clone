@@ -16,7 +16,11 @@ class App extends Component {
     this.setState({ notes: _arr });
   };
   editNote = () => {};
-  deleteNote = () => {};
+  deleteNote = (i) => {
+    let arr = [...this.state.notes];
+    arr.splice(1, i);
+    this.setState({ notes: arr });
+  };
 
   render() {
     return (
