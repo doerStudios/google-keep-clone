@@ -25,6 +25,7 @@ function NotesModal(props) {
     } else {
       context.editNote(data);
     }
+    props.onHide();
   };
 
   return (

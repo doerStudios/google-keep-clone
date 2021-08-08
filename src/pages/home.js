@@ -22,7 +22,7 @@ export default class Workflows extends Component {
     return (
       <>
         <div className="">
-          <Row className="p-4">
+          <Row className="p-4 text-center">
             <Button variant="dark" size="lg" onClick={this.createNoteHandler}>
               Create Note <Plus fontSize="1.2rem" />
             </Button>
