@@ -1,7 +1,67 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useForm, useFieldArray } from "react-hook-form";
+import { Col, Row, Form, Modal, Button, Card } from "react-bootstrap";
 
-function notesModal() {
-  return <div></div>;
+function NotesModal(props) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      id: props?.id,
+      title: props?.title,
+      note: props?.note,
+    },
+  });
+
+  const onSubmit = async (data) => {
+    console.log("submission data", data);
+  };
+
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Note</Modal.Title>
+      </Modal.Header>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Modal.Body>
+          <Row>
+            <Form.Group as={Col}>
+              {/* <Form.Label>Title</Form.Label> */}
+              <Form.Control
+                size="lg"
+                type="text"
+                placeholder="Title"
+                {...register("title")}
+              ></Form.Control>
+            </Form.Group>
+          </Row>
+          <Row>
+            <Form.Group as={Col}>
+              {/* <Form.Label>Note</Form.Label> */}
+              <Form.Control
+                size="lg"
+                as="textarea"
+                placeholder="Notes"
+                {...register("note")}
+              ></Form.Control>
+            </Form.Group>
+          </Row>
+        </Modal.Body>
+        <Modal.Footer className="text-center">
+          <Button variant="dark" type="submit" size="lg">
+            Save
+          </Button>
+        </Modal.Footer>
+      </Form>
+    </Modal>
+  );
 }
 
-export default notesModal;
+export default NotesModal;
