@@ -10,8 +10,12 @@ class App extends Component {
     notes: [],
   };
 
-  createNote = () => {};
-  editNotes = () => {};
+  createNote = (data) => {
+    data.id = Date.now();
+    const _arr = [...this.state.notes, data];
+    this.setState({ notes: _arr });
+  };
+  editNote = () => {};
   deleteNote = () => {};
 
   render() {
@@ -22,7 +26,7 @@ class App extends Component {
             value={{
               notes: this.state.notes,
               createNote: this.createNote,
-              editNotes: this.editNotes,
+              editNote: this.editNote,
               deleteNote: this.deleteNote,
             }}
           >

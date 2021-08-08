@@ -3,6 +3,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import NotesList from "../components/notesList";
 import NotesModal from "../components/notesModal";
+import NotesContext from "../context/notes-context";
 
 export default class Workflows extends Component {
   state = {
@@ -11,26 +12,28 @@ export default class Workflows extends Component {
     showCreateNotesModal: false,
   };
 
+  static context = NotesContext;
+
+  createNoteHandler = () => {
+    this.setState({ showCreateNotesModal: true });
+  };
+
   render() {
     return (
       <>
         <div className="">
-          <h1>Notes</h1>
-          <Row>
-            <Col className="center">
-              <Button
-                variant="dark"
-                size="lg"
-                onClick={this.createWorkflowHandler}
-              >
-                Create Note <Plus fontSize="1.2rem" />
-              </Button>
-            </Col>
+          <Row className="p-4">
+            <Button variant="dark" size="lg" onClick={this.createNoteHandler}>
+              Create Note <Plus fontSize="1.2rem" />
+            </Button>
           </Row>
-          <Row>
+          <Row className="p-4">
             <NotesList />
           </Row>
-          <NotesModal />
+          <NotesModal
+            show={this.state.showCreateNotesModal}
+            onHide={() => this.setState({ showCreateNotesModal: false })}
+          />
         </div>
       </>
     );

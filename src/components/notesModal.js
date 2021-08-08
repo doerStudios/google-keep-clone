@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Col, Row, Form, Modal, Button, Card } from "react-bootstrap";
+import NotesContext from "../context/notes-context";
 
 function NotesModal(props) {
   const {
@@ -15,8 +16,15 @@ function NotesModal(props) {
     },
   });
 
+  const context = useContext(NotesContext);
+
   const onSubmit = async (data) => {
     console.log("submission data", data);
+    if (!data.id) {
+      context.createNote(data);
+    } else {
+      context.editNote(data);
+    }
   };
 
   return (

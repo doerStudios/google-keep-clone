@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import NotesContext from "../context/notes-context";
 
-function notesList() {
-  return <div> notes list</div>;
+function NotesList() {
+  const context = useContext(NotesContext);
+
+  return <div> notes list {JSON.stringify(context.notes)}</div>;
 }
 
-export default notesList;
+export default NotesList;
