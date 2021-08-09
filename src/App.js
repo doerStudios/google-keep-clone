@@ -18,7 +18,7 @@ class App extends Component {
   editNote = () => {};
   deleteNote = (i) => {
     let arr = [...this.state.notes];
-    arr.splice(1, i);
+    arr.splice(i, 1);
     this.setState({ notes: arr });
   };
 
