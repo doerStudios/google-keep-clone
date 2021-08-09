@@ -58,6 +58,7 @@ function NotesModal(props) {
                 size="lg"
                 as="textarea"
                 placeholder="Notes"
+                required
                 {...register("note")}
               ></Form.Control>
             </Form.Group>
