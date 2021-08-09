@@ -10,9 +10,9 @@ function NotesModal(props) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      id: props?.id,
-      title: props?.title,
-      note: props?.note,
+      id: props.note?.id,
+      title: props.note?.title,
+      note: props.note?.note,
     },
   });
 

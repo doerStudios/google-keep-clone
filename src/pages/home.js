@@ -7,7 +7,7 @@ import NotesContext from "../context/notes-context";
 
 export default class Workflows extends Component {
   state = {
-    notes: [],
+    note: {},
     isLoading: false,
     showCreateNotesModal: false,
   };
@@ -15,7 +15,11 @@ export default class Workflows extends Component {
   static context = NotesContext;
 
   createNoteHandler = () => {
-    this.setState({ showCreateNotesModal: true });
+    this.setState({ note: {}, showCreateNotesModal: true });
+  };
+
+  editNoteHandler = (data) => {
+    this.setState({ note: data, showCreateNotesModal: true });
   };
 
   render() {
@@ -30,12 +34,15 @@ export default class Workflows extends Component {
             </Col>
           </Row>
           <Row className="p-4">
-            <NotesList />
+            <NotesList editNote={this.editNoteHandler} />
           </Row>
-          <NotesModal
-            show={this.state.showCreateNotesModal}
-            onHide={() => this.setState({ showCreateNotesModal: false })}
-          />
+          {this.state.showCreateNotesModal && (
+            <NotesModal
+              note={this.state.note}
+              show={this.state.showCreateNotesModal}
+              onHide={() => this.setState({ showCreateNotesModal: false })}
+            />
+          )}
         </Container>
       </>
     );

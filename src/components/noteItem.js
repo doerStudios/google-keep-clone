@@ -8,8 +8,6 @@ import NotesModal from "./notesModal";
 function NoteItem(props) {
   const context = useContext(NotesContext);
 
-  const removeWorkflow = () => {};
-
   return (
     <>
       <Col xs={12} md={4} style={{ marginTop: "1.5rem" }}>
@@ -27,7 +25,13 @@ function NoteItem(props) {
                   id="dropdown-custom-components"
                 ></Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={console.log()}>Edit</Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => {
+                      props.editNote(props);
+                    }}
+                  >
+                    Edit
+                  </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() => context.deleteNote(props.index)}
                   >
