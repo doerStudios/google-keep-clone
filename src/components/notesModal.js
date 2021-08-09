@@ -6,6 +6,7 @@ import NotesContext from "../context/notes-context";
 function NotesModal(props) {
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -36,7 +37,9 @@ function NotesModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Note</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">
+          {watch("title")}
+        </Modal.Title>
       </Modal.Header>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
