@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Row, Container } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import NotesList from "../components/notesList";
 import NotesModal from "../components/notesModal";
@@ -21,11 +21,13 @@ export default class Workflows extends Component {
   render() {
     return (
       <>
-        <div className="">
-          <Row className="p-4 text-center">
-            <Button variant="dark" size="lg" onClick={this.createNoteHandler}>
-              Create Note <Plus fontSize="1.2rem" />
-            </Button>
+        <Container>
+          <Row className="p-4 center-block">
+            <Col className="text-center">
+              <Button variant="dark" size="lg" onClick={this.createNoteHandler}>
+                Create Note <Plus fontSize="1.5rem" />
+              </Button>
+            </Col>
           </Row>
           <Row className="p-4">
             <NotesList />
@@ -34,7 +36,7 @@ export default class Workflows extends Component {
             show={this.state.showCreateNotesModal}
             onHide={() => this.setState({ showCreateNotesModal: false })}
           />
-        </div>
+        </Container>
       </>
     );
   }
